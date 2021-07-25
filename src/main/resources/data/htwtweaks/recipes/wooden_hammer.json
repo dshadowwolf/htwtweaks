@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [ "BXB",
+               " R ",
+               " R " ],
+  "key": {
+    "B": { "tag": "minecraft:logs" },
+    "X": { "type": "forge:nbt",
+      "item": "tconstruct:tool_binding",
+      "nbt": "{ \"Material\":  \"tconstruct:wood\" }" },
+    "R": { "type": "forge:nbt",
+      "item": "tconstruct:tool_handle",
+      "nbt": "{ \"Material\":  \"tconstruct:wood\" }" }
+  },
+  "result": { "item": "htwtweaks:wooden_hammer" }
+}

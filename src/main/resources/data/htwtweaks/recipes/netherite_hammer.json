@@ -1,0 +1,26 @@
+{
+    "key": {
+        "B": {
+            "tag": "forge:storage_blocks/netherite"
+        },
+        "R": {
+            "item": "tconstruct:tool_handle",
+            "nbt": "{ \"Material\":  \"tconstruct:wood\" }",
+            "type": "forge:nbt"
+        },
+        "X": {
+            "item": "tconstruct:tool_binding",
+            "nbt": "{ \"Material\":  \"tconstruct:wood\" }",
+            "type": "forge:nbt"
+        }
+    },
+    "pattern": [
+        "BXB",
+        " R ",
+        " R "
+    ],
+    "result": {
+        "item": "htwtweaks:netherite_hammer"
+    },
+    "type": "minecraft:crafting_shaped"
+}
