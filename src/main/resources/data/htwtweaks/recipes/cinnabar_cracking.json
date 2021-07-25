@@ -4,5 +4,6 @@
     },
     "result": {
         "item": "thermal:cinnabar_dust"
-    }
+    },
+    "type": "htwtweaks:crushing"
 }

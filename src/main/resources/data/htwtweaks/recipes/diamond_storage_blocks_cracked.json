@@ -1,9 +1,10 @@
 {
     "ingredient": {
-        "tag": "forge:ender_pearls"
+        "tag": "forge:storage_blocks/diamond"
     },
     "result": {
-        "item": "thermal:ender_pearl_dust",
-        "count": 9
-    }
+        "count": 9,
+        "item": "thermal:diamond_dust"
+    },
+    "type": "htwtweaks:crushing"
 }

@@ -1,9 +1,10 @@
 {
     "ingredient": {
-        "tag": "forge:ender_pearls"
+        "tag": "forge:ores/iron"
     },
     "result": {
-        "item": "thermal:ender_pearl_dust",
-        "count": 2
-    }
+        "count": 2,
+        "item": "thermal:iron_dust"
+    },
+    "type": "htwtweaks:crushing"
 }

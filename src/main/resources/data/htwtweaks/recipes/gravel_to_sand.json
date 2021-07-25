@@ -4,5 +4,6 @@
     },
     "result": {
         "item": "minecraft:sand"
-    }
+    },
+    "type": "htwtweaks:crushing"
 }

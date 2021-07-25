@@ -4,5 +4,6 @@
     },
     "result": {
         "item": "thermal:sulfur_dust"
-    }
+    },
+    "type": "htwtweaks:crushing"
 }

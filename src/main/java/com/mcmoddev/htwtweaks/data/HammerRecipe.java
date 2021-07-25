@@ -145,6 +145,7 @@ public class HammerRecipe implements IForgeRegistryEntry<HammerRecipe>, IRecipe<
 			HighTechWolvesTweaks.LOGGER.info("Reading recipe {}", recipeId);
 			Ingredient input = CraftingHelper.getIngredient(JSONUtils.getJsonObject(json, "ingredient"));
 			ItemStack output = CraftingHelper.getItemStack(JSONUtils.getJsonObject(json, "result"), true);
+			HighTechWolvesTweaks.LOGGER.info("Recipe {} outputs {} from {}", recipeId, output, input.serialize().toString());
 			HammerRecipe result = new HammerRecipe(recipeId, input, output);
 			return result;
 		}

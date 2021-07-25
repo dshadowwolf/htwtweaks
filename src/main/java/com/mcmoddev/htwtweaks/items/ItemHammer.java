@@ -137,7 +137,7 @@ public class ItemHammer extends ToolItem {
 		theTool.damageItem(dam, context.getPlayer(), null);
 
 		ItemStack result = recipe.getResult();
-		result.setCount(dam);
+		result.setCount(dam * result.getCount());
 		ItemEntity rr = new ItemEntity(world, pX, pY, pZ, result.copy());
 
 		ServerWorld w = (ServerWorld) world;
