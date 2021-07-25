@@ -1,0 +1,8 @@
+{
+    "ingredient": {
+        "tag": "forge:gravel"
+    },
+    "result": {
+        "item": "minecraft:sand"
+    }
+}

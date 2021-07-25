@@ -1,0 +1,16 @@
+[
+ {
+   "modid": "htwtweaks",
+   "name": "HTW Tweaks",
+   "description": "Various tweaks and additions for the High Tech Wolves modpack",
+   "version": "${version}",
+   "mcversion": "${mcversion}",
+   "url": "https://github.com/MinecraftModDevelopmentMods/ExampleMod",
+   "updateUrl": "",
+   "authorList": ["dshadowwolf","jriwanek"],
+   "credits": "",
+   "logoFile": "",
+   "screenshots": [],
+   "dependencies": []
+ }
+]

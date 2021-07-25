@@ -1,0 +1,9 @@
+{
+    "ingredient": {
+        "tag": "forge:ender_pearls"
+    },
+    "result": {
+        "item": "thermal:ender_pearl_dust",
+        "count": 9
+    }
+}

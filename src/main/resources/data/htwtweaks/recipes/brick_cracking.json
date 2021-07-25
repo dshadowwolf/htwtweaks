@@ -1,0 +1,9 @@
+{
+    "ingredient": {
+        "item": "minecraft:bricks"
+    },
+    "result": {
+        "item": "minecraft:brick",
+        "count": 3
+    }
+}

@@ -8,8 +8,12 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.*;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.LootTableManager;
+import net.minecraft.loot.LootTables;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -58,6 +62,7 @@ public class ItemHammer extends ToolItem {
 	@Override
 	public boolean onBlockDestroyed(@Nonnull final ItemStack stack, @Nonnull final World worldIn, @Nonnull final BlockState state, @Nonnull final BlockPos pos, @Nonnull final LivingEntity entityLiving) {
 		if (!(entityLiving instanceof PlayerEntity)) return false;
+
 		/*
 		 * At the moment this is broken - I need to find a way to shut down the default block drop when the hammer is used.
 		 */

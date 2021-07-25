@@ -1,0 +1,8 @@
+{
+    "ingredient": {
+        "tag": "forge:ingots/uranium"
+    },
+    "result": {
+        "item": "bigreactors:yallorium_dust"
+    }
+}

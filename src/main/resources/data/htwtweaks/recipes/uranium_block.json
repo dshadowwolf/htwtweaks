@@ -1,0 +1,9 @@
+{
+    "ingredient": {
+        "tag": "forge:storage_blocks/uranium"
+    },
+    "result": {
+        "item": "bigreactors:yellorium_dust",
+        "count": 9
+    }
+}

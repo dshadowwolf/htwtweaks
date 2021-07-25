@@ -1,0 +1,8 @@
+{
+    "ingredient": {
+        "tag": "forge:gems/apatite"
+    },
+    "result": {
+        "item": "thermal:apatite_dust"
+    }
+}

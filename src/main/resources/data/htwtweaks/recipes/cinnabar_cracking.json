@@ -1,0 +1,8 @@
+{
+    "ingredient": {
+        "tag": "forge:gems/cinnabar"
+    },
+    "result": {
+        "item": "thermal:cinnabar_dust"
+    }
+}

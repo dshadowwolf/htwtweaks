@@ -1,0 +1,8 @@
+{
+    "ingredient": {
+        "tag": "forge:ingots/cyanite"
+    },
+    "result": {
+        "item": "bigreactors:cyanite_dust"
+    }
+}
