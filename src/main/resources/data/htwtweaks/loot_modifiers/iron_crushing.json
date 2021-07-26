@@ -1,0 +1,11 @@
+{
+  "type": "htwtweaks:hammer_crushing",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "item": "htwtweaks:iron_hammer"
+      }
+    }
+  ]
+}

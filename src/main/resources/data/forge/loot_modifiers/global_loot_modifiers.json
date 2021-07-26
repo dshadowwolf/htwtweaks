@@ -1,6 +1,11 @@
 {
   "replaces": false,
   "entries": [
-    "htwtweaks:cracked_stuff"
+    "htwtweaks:diamond_crushing",
+    "htwtweaks:golden_crushing",
+    "htwtweaks:iron_crushing",
+    "htwtweaks:netherite_crushing",
+    "htwtweaks:stone_crushing",
+    "htwtweaks:wooden_crushing"
   ]
 }
