@@ -1,11 +1,17 @@
 package com.mcmoddev.htwtweaks;
 
 import com.mcmoddev.htwtweaks.data.HammerRecipe;
+import com.mcmoddev.htwtweaks.misc.HammerLootCondition;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.loot.conditions.LootConditionManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -39,6 +45,7 @@ public class HighTechWolvesTweaks {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
 		FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
+		FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(GlobalLootModifierSerializer.class, this::lootModifiers);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -70,6 +77,14 @@ public class HighTechWolvesTweaks {
 
 	private void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
 		event.getRegistry().registerAll( new HammerRecipe.Serializer().setRegistryName("crushing"));
+	}
+
+	private void lootModifiers(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event)
+	{
+		LOGGER.info(">>> Registering Loot Serializer! <<<");
+		event.getRegistry().register(
+			new HammerLootCondition.Serializer().setRegistryName(new ResourceLocation("htwtweaks","hammer_crushing"))
+		);
 	}
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
