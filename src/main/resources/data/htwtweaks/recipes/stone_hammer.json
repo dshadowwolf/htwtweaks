@@ -1,7 +1,7 @@
 {
     "key": {
         "B": {
-            "tag": "forge:storage_blocks/stone"
+            "item": "minecraft:stone"
         },
         "R": {
             "item": "tconstruct:tool_handle",

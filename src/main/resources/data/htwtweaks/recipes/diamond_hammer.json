@@ -1,7 +1,7 @@
 {
     "key": {
         "B": {
-            "tag": "forge:storage_blocks/diamond"
+            "tag": "forge:gems/diamond"
         },
         "R": {
             "item": "tconstruct:tool_handle",
