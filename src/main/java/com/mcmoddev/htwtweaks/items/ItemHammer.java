@@ -57,33 +57,10 @@ public class ItemHammer extends ToolItem {
 
 	@Override
 	public boolean onBlockDestroyed(@Nonnull final ItemStack stack, @Nonnull final World worldIn, @Nonnull final BlockState state, @Nonnull final BlockPos pos, @Nonnull final LivingEntity entityLiving) {
-		if (!(entityLiving instanceof PlayerEntity)) return false;
-
 		/*
-		 * At the moment this is broken - I need to find a way to shut down the default block drop when the hammer is used.
+		 * Short rant: in 1.12 this is where we handled dropping alternate returns if something was mined with the hammer that had a cracking recipe.
+		 * In 1.16 that isn't possible to do here - this sub-classed implementation is kept as heritage. The actual "cracked while mining" stuff is now a global loot modifier.
 		 */
-		/*
-		if (this.canHarvestBlockInternal(state)) {
-			HighTechWolvesTweaks.LOGGER.info("harvesting");
-			Inventory inv = new Inventory(1);
-			inv.setInventorySlotContents(0,state.getBlock().asItem().getDefaultInstance());
-			Optional<HammerRecipe> rec = worldIn.getRecipeManager().getRecipe(HammerRecipe.CRUSHING, inv, worldIn);
-			HighTechWolvesTweaks.LOGGER.info("recipe found? {} ({})", rec.isPresent(), rec.isPresent()?rec.get().getRegistryName().toString():"null");
-
-			// we got a recipe ?
-			if (rec.isPresent()) {
-				HammerRecipe recipe = rec.get();
-				ServerWorld test = (ServerWorld) worldIn;
-				ItemStack recRes = recipe.getRecipeOutput().copy();
-				ItemEntity res = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, recRes);
-				HighTechWolvesTweaks.LOGGER.info("Spawning ItemEntity for recipe {} result of {} -- {}", recipe.getRegistryName().toString(), recRes.toString(), res.toString());
-				test.addEntity(res);
-				return true;
-			}
-		} else {
-			HighTechWolvesTweaks.LOGGER.info("Hardness check failed ? {}", this.canHarvestBlockInternal(state));
-		}
-        */
 		return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);
 	}
 
