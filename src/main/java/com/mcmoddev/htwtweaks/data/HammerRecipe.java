@@ -31,7 +31,7 @@ public class HammerRecipe implements IForgeRegistryEntry<HammerRecipe>, IRecipe<
 	private final ItemStack resultItem;
 
 	@ObjectHolder("htwtweaks:crushing")
-	public static IRecipeSerializer<?> SERIALIZER = null;
+	public static final IRecipeSerializer<?> SERIALIZER = null;
 
 	public static final IRecipeType<HammerRecipe> CRUSHING = IRecipeType.register(new ResourceLocation("htwtweaks","crushing").toString());
 
@@ -83,7 +83,7 @@ public class HammerRecipe implements IForgeRegistryEntry<HammerRecipe>, IRecipe<
 	}
 
 	public boolean matches(Ingredient ingredient) {
-		List<ItemStack> matches = Arrays.stream(this.sourceIngredient.getMatchingStacks()).filter(ingredient::test).collect(Collectors.toList());
+		List<ItemStack> matches = Arrays.stream(this.sourceIngredient.getMatchingStacks()).filter(ingredient).collect(Collectors.toList());
 		return !matches.isEmpty();
 	}
 
@@ -146,8 +146,7 @@ public class HammerRecipe implements IForgeRegistryEntry<HammerRecipe>, IRecipe<
 			Ingredient input = CraftingHelper.getIngredient(JSONUtils.getJsonObject(json, "ingredient"));
 			ItemStack output = CraftingHelper.getItemStack(JSONUtils.getJsonObject(json, "result"), true);
 			HighTechWolvesTweaks.LOGGER.info("Recipe {} outputs {} from {}", recipeId, output, input.serialize().toString());
-			HammerRecipe result = new HammerRecipe(recipeId, input, output);
-			return result;
+			return new HammerRecipe(recipeId, input, output);
 		}
 
 		@Nullable

@@ -20,7 +20,7 @@ public class ModItems {
 		public final int miningSpeed;
 		public final int stackSize;
 		public final String name;
-		public ItemTier tier;
+		public final ItemTier tier;
 
 		public ItemParameters(String n, ItemTier t, int d, float as, int ms, int ss) {
 			attackSpeed = as;
@@ -53,11 +53,6 @@ public class ModItems {
 
 	public ModItems() {
 		// blank because it seems like we need a default constructor...
-	}
-
-	@SubscribeEvent
-	public static final void blargh(final RegistryEvent.Register<HammerRecipe> event) {
-		HighTechWolvesTweaks.LOGGER.info("RECIPES!!!");
 	}
 
 	@SubscribeEvent

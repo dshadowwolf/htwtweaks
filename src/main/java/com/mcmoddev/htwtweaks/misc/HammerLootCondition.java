@@ -27,7 +27,6 @@ public class HammerLootCondition extends LootModifier {
 	public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
 		HighTechWolvesTweaks.LOGGER.info("HammerLootCondition.doApply()");
 		List<ItemStack> ret = new LinkedList<>();
-		ItemStack ctxTool = context.get(LootParameters.TOOL);
 		generatedLoot.forEach((stack) -> ret.add(crack(stack, context)));
 		return ret;
 	}
@@ -39,10 +38,11 @@ public class HammerLootCondition extends LootModifier {
 	}
 
 	public static class Serializer extends GlobalLootModifierSerializer<HammerLootCondition> {
-	public Serializer() {
-		super();
-		HighTechWolvesTweaks.LOGGER.info("HammerLootCondition.Serializer() constructor called");
-	}
+		public Serializer() {
+			super();
+			HighTechWolvesTweaks.LOGGER.info("HammerLootCondition.Serializer() constructor called");
+		}
+
 		@Override
 		public HammerLootCondition read(ResourceLocation name, JsonObject object, ILootCondition[] conditionsIn) {
 			HighTechWolvesTweaks.LOGGER.info("HammerLootCondition.Serializer.read({}, {}, {})", name.toString(), object.toString(), conditionsIn);
