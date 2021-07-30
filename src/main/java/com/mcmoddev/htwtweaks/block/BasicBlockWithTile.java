@@ -1,5 +1,7 @@
-package com.mcmoddev.htwtweaks.transport;
+package com.mcmoddev.htwtweaks.block;
 
+import com.mcmoddev.htwtweaks.interfaces.BlockActivatedCallback;
+import com.mcmoddev.htwtweaks.interfaces.TileEntityGetter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,7 +15,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-abstract public class BasicBlockWithTile extends Block {
+public class BasicBlockWithTile extends Block {
 	private final TileEntityGetter makeTile;
 	private final BlockActivatedCallback activated;
 
