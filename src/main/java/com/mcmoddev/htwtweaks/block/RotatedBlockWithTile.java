@@ -15,11 +15,11 @@ import net.minecraft.world.IBlockReader;
 
 import java.util.EnumMap;
 
-public class RotatedVoxelBlockWithTile extends VoxelBlockWithTile {
+public class RotatedBlockWithTile extends BasicBlockWithTile {
 	private final RotationGetter getRotation;
 	public static DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-	public RotatedVoxelBlockWithTile(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape) {
+	public RotatedBlockWithTile(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape) {
 		super(properties, getter, blockActivated, voxelShape);
 		this.getRotation = rotateShape;
 	}

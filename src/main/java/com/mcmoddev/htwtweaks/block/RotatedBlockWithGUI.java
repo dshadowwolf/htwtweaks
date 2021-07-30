@@ -12,10 +12,10 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class RotatedVoxelBlockWithGUI extends RotatedVoxelBlockWithTile {
+public class RotatedBlockWithGUI extends RotatedBlockWithTile {
 	private final ContainerCallback container;
 
-	public RotatedVoxelBlockWithGUI(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape, ContainerCallback getContainer) {
+	public RotatedBlockWithGUI(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape, ContainerCallback getContainer) {
 		super(properties, getter, blockActivated, voxelShape, rotateShape);
 		this.container = getContainer;
 	}

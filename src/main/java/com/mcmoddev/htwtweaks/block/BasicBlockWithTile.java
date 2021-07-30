@@ -1,6 +1,7 @@
 package com.mcmoddev.htwtweaks.block;
 
 import com.mcmoddev.htwtweaks.interfaces.BlockActivatedCallback;
+import com.mcmoddev.htwtweaks.interfaces.ShapeGetter;
 import com.mcmoddev.htwtweaks.interfaces.TileEntityGetter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -15,14 +16,18 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BasicBlockWithTile extends Block {
+public class BasicBlockWithTile extends BaseBlockWithShape {
 	private final TileEntityGetter makeTile;
 	private final BlockActivatedCallback activated;
 
-	public BasicBlockWithTile(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated) {
-		super(properties);
+	public BasicBlockWithTile(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter shapeGetter) {
+		super(properties, shapeGetter);
 		this.makeTile = getter;
 		this.activated = blockActivated;
+	}
+
+	public BasicBlockWithTile(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated) {
+		this(properties, getter, blockActivated, null);
 	}
 
 	@Override
