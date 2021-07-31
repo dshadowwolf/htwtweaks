@@ -1,7 +1,7 @@
 {
   "variants": {
     "facing=north": {
-      "model": "htwtweaks:block/laser_transport_node",
+      "model": "htwtweaks:block/laser_transport_node"
     },
     "facing=south": {
       "model": "htwtweaks:block/laser_transport_node",
