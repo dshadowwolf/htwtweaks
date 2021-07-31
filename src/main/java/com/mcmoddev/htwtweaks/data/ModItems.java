@@ -2,9 +2,8 @@ package com.mcmoddev.htwtweaks.data;
 
 import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import com.mcmoddev.htwtweaks.items.ItemHammer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemTier;
+import net.minecraft.item.*;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -62,5 +61,6 @@ public class ModItems {
 			ItemHammer thisHammer = new ItemHammer(parameters.name, parameters.tier, parameters.attackDamage, parameters.attackSpeed, parameters.miningSpeed, new Item.Properties().group(ItemGroup.TOOLS).maxDamage(parameters.stackSize));
 			registry.register(thisHammer);
 		}
+		registry.register(new BlockItem(HighTechWolvesTweaks.TRANSPORT_NODE, new Item.Properties().addToolType(ToolType.PICKAXE, 1).rarity(Rarity.EPIC)).setRegistryName("laser_transport_node"));
 	}
 }

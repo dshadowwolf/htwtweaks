@@ -4,8 +4,11 @@ import com.mcmoddev.htwtweaks.interfaces.BlockActivatedCallback;
 import com.mcmoddev.htwtweaks.interfaces.RotationGetter;
 import com.mcmoddev.htwtweaks.interfaces.ShapeGetter;
 import com.mcmoddev.htwtweaks.interfaces.TileEntityGetter;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +16,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
+import javax.annotation.Nullable;
 import java.util.EnumMap;
 
 public class RotatedBlockWithTile extends BasicBlockWithTile {
@@ -32,5 +36,18 @@ public class RotatedBlockWithTile extends BasicBlockWithTile {
 	{
 		Direction facing = state.get(FACING);
 		return cache.computeIfAbsent(facing, this.getRotation::get);
+	}
+
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement(BlockItemUseContext context)
+	{
+		return getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
+	}
+
+	@Override
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+	{
+		builder.add(FACING);
 	}
 }

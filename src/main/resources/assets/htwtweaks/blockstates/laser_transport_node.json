@@ -2,26 +2,26 @@
   "variants": {
     "facing=north": {
       "model": "htwtweaks:block/laser_transport_node",
-      "x": 90
     },
     "facing=south": {
       "model": "htwtweaks:block/laser_transport_node",
-      "x": 270
+      "y": 180
     },
     "facing=west": {
       "model": "htwtweaks:block/laser_transport_node",
-      "z": 270
+      "y": 270
     },
     "facing=east": {
       "model": "htwtweaks:block/laser_transport_node",
-      "z": 90
+      "y": 90
     },
     "facing=down": {
       "model": "htwtweaks:block/laser_transport_node",
-      "z": 180
+      "x": 180
     },
     "facing=up": {
-      "model": "htwtweaks:block/laser_transport_node"
+      "model": "htwtweaks:block/laser_transport_node",
+      "x": 90
     }
   }
 }

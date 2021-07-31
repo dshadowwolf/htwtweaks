@@ -3,6 +3,7 @@
   "loader": "forge:obj",
   "model": "htwtweaks:models/obj/laser_transport.obj",
   "transform": {
-    "scale": [0.05,0.05,0.05]
+    "scale": [0.05,0.05,0.05],
+    "rotation": [ { "x": 90 } ]
   }
 }

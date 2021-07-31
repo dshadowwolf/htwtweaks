@@ -52,7 +52,7 @@ public class HighTechWolvesTweaks {
 	}
 
     @ObjectHolder("htwtweaks:laser_transport_node")
-	private static Block TRANSPORT_NODE = toBeInitializedLater();
+	public static Block TRANSPORT_NODE = toBeInitializedLater();
 
     public HighTechWolvesTweaks() {
         // Register the setup method for modloading
@@ -121,7 +121,7 @@ public class HighTechWolvesTweaks {
 
 	private void blockRegistration(RegistryEvent.Register<Block> ev) {
     	ev.getRegistry().register(new LaserTransportNodeBase(AbstractBlock.Properties.create(Material.IRON),
-			null,	null,
+			(state, world) -> (TileEntity)(new LaserTransportTileEntity()),	null,
 			(id, inv, position) -> new LaserTransportContainer(id, inv, position)).setRegistryName("laser_transport_node"));
 	}
 
