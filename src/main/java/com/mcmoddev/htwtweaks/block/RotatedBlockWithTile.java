@@ -21,7 +21,7 @@ import java.util.EnumMap;
 
 public class RotatedBlockWithTile extends BasicBlockWithTile {
 	private final RotationGetter getRotation;
-	public static DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+	public static DirectionProperty FACING = BlockStateProperties.FACING;
 
 	public RotatedBlockWithTile(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape) {
 		super(properties, getter, blockActivated, voxelShape);
@@ -42,7 +42,7 @@ public class RotatedBlockWithTile extends BasicBlockWithTile {
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context)
 	{
-		return getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
+		return getDefaultState().with(FACING, context.getFace());
 	}
 
 	@Override
