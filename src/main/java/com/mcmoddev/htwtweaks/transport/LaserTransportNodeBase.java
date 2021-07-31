@@ -3,7 +3,6 @@ package com.mcmoddev.htwtweaks.transport;
 import com.mcmoddev.htwtweaks.block.RotatedBlockWithGUI;
 import com.mcmoddev.htwtweaks.interfaces.*;
 import com.mcmoddev.htwtweaks.util.ShapeUtils;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 

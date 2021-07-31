@@ -1,4 +1,4 @@
-package com.mcmoddev.htwtweaks.transport.containers;
+package com.mcmoddev.htwtweaks.transport.tiles;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
