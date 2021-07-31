@@ -10,6 +10,8 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.tileentity.TileEntity;
@@ -79,6 +81,7 @@ public class HighTechWolvesTweaks {
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 		event.enqueueWork(() -> {
 			ScreenManager.registerFactory(LaserTransportContainer.TYPE, LaserTransportScreen::new);
+			RenderTypeLookup.setRenderLayer(TRANSPORT_NODE, RenderType.getTranslucent());
 		});
     }
 

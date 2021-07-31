@@ -1,5 +1,6 @@
 {
   "parent": "block/block",
   "loader": "forge:obj",
-  "model": "htwtweaks:models/obj/laser_base_rework.obj"
+  "model": "htwtweaks:models/obj/laser_base_rework.obj",
+  "ambientToFullbrught": true
 }
