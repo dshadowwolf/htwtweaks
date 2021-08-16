@@ -9,15 +9,18 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class RotatedBlockWithGUI extends RotatedBlockWithTile {
 	private final ContainerCallback container;
+	private final ITextComponent titleKey;
 
-	public RotatedBlockWithGUI(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape, ContainerCallback getContainer) {
+	public RotatedBlockWithGUI(Properties properties, TileEntityGetter getter, BlockActivatedCallback blockActivated, ShapeGetter voxelShape, RotationGetter rotateShape, ContainerCallback getContainer, ITextComponent titleKey) {
 		super(properties, getter, blockActivated, voxelShape, rotateShape);
 		this.container = getContainer;
+		this.titleKey = titleKey;
 	}
 
 	@Deprecated
@@ -28,8 +31,7 @@ public class RotatedBlockWithGUI extends RotatedBlockWithTile {
 			return ActionResultType.SUCCESS;
 
 		player.openContainer(new SimpleNamedContainerProvider(
-			(id, playerInv, p) -> this.container.get(id, playerInv, IWorldPosCallable.of(worldIn, pos)),
-			new TranslationTextComponent("container.htwtweaks.base_rotated")
+			(id, playerInv, p) -> this.container.get(id, playerInv, IWorldPosCallable.of(worldIn, pos)), this.titleKey
 		));
 
 		return ActionResultType.SUCCESS;

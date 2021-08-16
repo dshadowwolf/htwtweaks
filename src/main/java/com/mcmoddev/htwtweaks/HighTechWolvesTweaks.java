@@ -1,6 +1,8 @@
 package com.mcmoddev.htwtweaks;
 
 import com.mcmoddev.htwtweaks.data.HammerRecipe;
+import com.mcmoddev.htwtweaks.data.ModItems;
+import com.mcmoddev.htwtweaks.items.properties.TweakItemProperties;
 import com.mcmoddev.htwtweaks.misc.HammerLootCondition;
 import com.mcmoddev.htwtweaks.transport.LaserTransportNodeBase;
 import com.mcmoddev.htwtweaks.transport.containers.LaserTransportContainer;
@@ -13,6 +15,7 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -82,6 +85,7 @@ public class HighTechWolvesTweaks {
 		event.enqueueWork(() -> {
 			ScreenManager.registerFactory(LaserTransportContainer.TYPE, LaserTransportScreen::new);
 			RenderTypeLookup.setRenderLayer(TRANSPORT_NODE, RenderType.getTranslucent());
+			ItemModelsProperties.registerProperty(ModItems.THE_WRENCH, new ResourceLocation("has_position"), (stack, world, entity) -> TweakItemProperties.positionStored(stack, world, entity));
 		});
     }
 

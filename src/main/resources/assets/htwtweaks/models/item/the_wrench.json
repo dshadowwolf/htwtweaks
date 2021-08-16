@@ -1,0 +1,12 @@
+{
+  "parent": "builtin/generated",
+  "textures": {
+    "layer0": "htwtweaks:item/wrench1"
+  },
+  "overrides": {
+    "predicate": {
+      "has_item": 1
+    },
+    "model": "htwtweaks:item/wrench_stored"
+  }
+}
