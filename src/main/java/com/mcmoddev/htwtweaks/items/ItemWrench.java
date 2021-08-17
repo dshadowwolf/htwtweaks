@@ -1,5 +1,6 @@
 package com.mcmoddev.htwtweaks.items;
 
+import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import com.mcmoddev.htwtweaks.transport.tiles.LaserTransportTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -29,10 +30,12 @@ public class ItemWrench extends Item {
 	// right click on block, I think...
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
+		HighTechWolvesTweaks.LOGGER.fatal("onItemUse!!!");
 		if (!context.getPlayer().isSneaking()) {
 			if (context.getWorld().getTileEntity(context.getPos()) instanceof LaserTransportTileEntity) {
 				// TODO: set TE Target
 			}
+			HighTechWolvesTweaks.LOGGER.fatal("Right Click Not Sneaking!");
 			return ActionResultType.PASS;
 		}
 
@@ -40,6 +43,10 @@ public class ItemWrench extends Item {
 		TileEntity te = context.getWorld().getTileEntity(p);
 		Direction d = context.getFace();
 		ItemStack item = context.getItem();
+
+		HighTechWolvesTweaks.LOGGER.fatal("Right Click Sneaking!");
+
+		if (te == null) return ActionResultType.FAIL;
 
 		if (te.getCapability(CapabilityEnergy.ENERGY, d).isPresent() ||
 			te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, d).isPresent() ||

@@ -2,6 +2,7 @@ package com.mcmoddev.htwtweaks.data;
 
 import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import com.mcmoddev.htwtweaks.items.ItemHammer;
+import com.mcmoddev.htwtweaks.items.ItemWrench;
 import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
@@ -66,8 +67,7 @@ public class ModItems {
 			ItemHammer thisHammer = new ItemHammer(parameters.name, parameters.tier, parameters.attackDamage, parameters.attackSpeed, parameters.miningSpeed, new Item.Properties().group(ItemGroup.TOOLS).maxDamage(parameters.stackSize));
 			registry.register(thisHammer);
 		}//Collections.emptySet(), builder.addToolType(ToolType.PICKAXE, tier.getHarvestLevel())
-		registry.register(new ToolItem(32, -1.5f,ItemTier.WOOD, Collections.emptySet(),
-			new Item.Properties().group(ItemGroup.TOOLS).maxDamage(4096)).setRegistryName(new ResourceLocation("htwtweaks", "the_wrench")));
+		registry.register(new ItemWrench("the_wrench", new Item.Properties().rarity(Rarity.COMMON).maxStackSize(1)));
 		registry.register(new BlockItem(HighTechWolvesTweaks.TRANSPORT_NODE, new Item.Properties().addToolType(ToolType.PICKAXE, 1).rarity(Rarity.EPIC)).setRegistryName("laser_transport_node"));
 	}
 }
