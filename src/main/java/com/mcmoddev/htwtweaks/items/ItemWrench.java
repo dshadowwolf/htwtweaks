@@ -2,6 +2,8 @@ package com.mcmoddev.htwtweaks.items;
 
 import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import com.mcmoddev.htwtweaks.transport.tiles.LaserTransportTileEntity;
+import com.mcmoddev.htwtweaks.util.WorldUtils;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
@@ -11,7 +13,13 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -30,12 +38,11 @@ public class ItemWrench extends Item {
 	// right click on block, I think...
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
-		HighTechWolvesTweaks.LOGGER.fatal("onItemUse!!!");
 		if (!context.getPlayer().isSneaking()) {
 			if (context.getWorld().getTileEntity(context.getPos()) instanceof LaserTransportTileEntity) {
-				// TODO: set TE Target
+				LaserTransportTileEntity t = (LaserTransportTileEntity) context.getWorld().getTileEntity(context.getPos());
+				t.link(context.getPos(), context.getFace());
 			}
-			HighTechWolvesTweaks.LOGGER.fatal("Right Click Not Sneaking!");
 			return ActionResultType.PASS;
 		}
 
@@ -43,8 +50,6 @@ public class ItemWrench extends Item {
 		TileEntity te = context.getWorld().getTileEntity(p);
 		Direction d = context.getFace();
 		ItemStack item = context.getItem();
-
-		HighTechWolvesTweaks.LOGGER.fatal("Right Click Sneaking!");
 
 		if (te == null) return ActionResultType.FAIL;
 
@@ -77,20 +82,31 @@ public class ItemWrench extends Item {
 		stackIn.setTag(data);
 	}
 
-	public boolean hasPosition(@Nonnull ItemStack stackIn) {
+	private boolean hasPositionInternal(@Nonnull ItemStack stackIn) {
 		CompoundNBT data = stackIn.getChildTag("target");
 
+		HighTechWolvesTweaks.LOGGER.fatal("data: %s", data==null?"null":data.toString());
 		if (data == null) return false;
+
+		HighTechWolvesTweaks.LOGGER.fatal("has targetPosition: %s", data.contains("targetPosition"));
+		HighTechWolvesTweaks.LOGGER.fatal("has targetFacing: %s", data.contains("targetFacing"));
 		if (!data.contains("targetPosition") ||
 		    !data.contains("targetFacing")) return false;
 
 		return true;
 	}
 
+	public boolean hasPosition(@Nonnull ItemStack stackIn) {
+		boolean res = hasPositionInternal(stackIn);
+		HighTechWolvesTweaks.LOGGER.fatal("hasPosition: %s", res);
+		return res;
+	}
+
 	// raw right click in world...
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-			clearPosition(playerIn.getHeldItem(handIn));
-			return ActionResult.resultPass(playerIn.getHeldItem(handIn));
+		ItemStack item = playerIn.getHeldItem(handIn);
+		clearPosition(item);
+		return ActionResult.resultPass(item);
 	}
 }

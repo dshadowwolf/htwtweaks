@@ -6,7 +6,7 @@
   "overrides": [
     {
       "predicate": {
-        "has_item": 1
+        "has_position": 1
       },
       "model": "htwtweaks:item/wrench_stored"
     }
