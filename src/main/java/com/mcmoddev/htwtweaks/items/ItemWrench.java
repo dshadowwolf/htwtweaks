@@ -1,15 +1,19 @@
 package com.mcmoddev.htwtweaks.items;
 
-import net.minecraft.block.Blocks;
+import com.mcmoddev.htwtweaks.transport.tiles.LaserTransportTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nonnull;
 
@@ -25,13 +29,25 @@ public class ItemWrench extends Item {
 	// right click on block, I think...
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
-		if (!context.getPlayer().isSneaking()) return ActionResultType.PASS;
+		if (!context.getPlayer().isSneaking()) {
+			if (context.getWorld().getTileEntity(context.getPos()) instanceof LaserTransportTileEntity) {
+				// TODO: set TE Target
+			}
+			return ActionResultType.PASS;
+		}
 
-		if (context.getWorld().getBlockState(context.getPos()).getBlock() == Blocks.AIR)
-			clearPosition(context.getItem());
-		else
-			setPosition(context.getItem(), context.getPos(), context.getFace());
-		return ActionResultType.SUCCESS;
+		BlockPos p = context.getPos();
+		TileEntity te = context.getWorld().getTileEntity(p);
+		Direction d = context.getFace();
+		ItemStack item = context.getItem();
+
+		if (te.getCapability(CapabilityEnergy.ENERGY, d).isPresent() ||
+			te.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, d).isPresent() ||
+			te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, d).isPresent()) {
+			setPosition(item, p, d);
+			return ActionResultType.SUCCESS;
+		}
+		return ActionResultType.FAIL;
 	}
 
 	protected void clearPosition(@Nonnull ItemStack stackIn) {
@@ -67,16 +83,7 @@ public class ItemWrench extends Item {
 	// raw right click in world...
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		if (this.isFood()) {
-			ItemStack itemstack = playerIn.getHeldItem(handIn);
-			if (playerIn.canEat(this.getFood().canEatWhenFull())) {
-				playerIn.setActiveHand(handIn);
-				return ActionResult.resultConsume(itemstack);
-			} else {
-				return ActionResult.resultFail(itemstack);
-			}
-		} else {
+			clearPosition(playerIn.getHeldItem(handIn));
 			return ActionResult.resultPass(playerIn.getHeldItem(handIn));
-		}
 	}
 }
