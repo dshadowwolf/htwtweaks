@@ -2,17 +2,14 @@ package com.mcmoddev.htwtweaks.data;
 
 import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import com.mcmoddev.htwtweaks.items.ItemHammer;
-import com.mcmoddev.htwtweaks.items.ItemWrench;
+import com.mcmoddev.htwtweaks.items.ItemStoneTorch;
 import net.minecraft.item.*;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
-
-import java.util.Collections;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModItems {
@@ -47,12 +44,15 @@ public class ModItems {
 	public static final Item GOLDEN_HAMMER = null;
 	@ObjectHolder("htwtweaks:netherite_hammer")
 	public static final Item NETHERITE_HAMMER = null;
-	@ObjectHolder("htwtweaks:the_wrench")
-	public static final Item THE_WRENCH = null;
+    @ObjectHolder("htwtweaks:stone_torch")
+	public static final Item STONE_TORCH = null;
 
-	private static final ItemParameters[] items = new ItemParameters[] { new ItemParameters("wooden_hammer", ItemTier.WOOD, 6, -3.2f, 2, 59),
-		new ItemParameters("stone_hammer", ItemTier.STONE, 7, -3.2f, 4, 131 ), new ItemParameters("iron_hammer", ItemTier.IRON, 6, -3.1f, 6, 250 ),
-		new ItemParameters("diamond_hammer", ItemTier.DIAMOND, 5, -3.0f, 8, 1561 ), new ItemParameters("golden_hammer", ItemTier.GOLD, 6, -3.0f, 6, 32 ),
+	private static final ItemParameters[] items = new ItemParameters[] {
+		new ItemParameters("wooden_hammer", ItemTier.WOOD, 6, -3.2f, 2, 59),
+		new ItemParameters("stone_hammer", ItemTier.STONE, 7, -3.2f, 4, 131 ),
+		new ItemParameters("iron_hammer", ItemTier.IRON, 6, -3.1f, 6, 250 ),
+		new ItemParameters("diamond_hammer", ItemTier.DIAMOND, 5, -3.0f, 8, 1561 ),
+		new ItemParameters("golden_hammer", ItemTier.GOLD, 6, -3.0f, 6, 32 ),
 		new ItemParameters("netherite_hammer", ItemTier.NETHERITE, 5, -3.0f, 8, 2031 )
 	};
 
@@ -66,8 +66,7 @@ public class ModItems {
 		for (ItemParameters parameters : items) {
 			ItemHammer thisHammer = new ItemHammer(parameters.name, parameters.tier, parameters.attackDamage, parameters.attackSpeed, parameters.miningSpeed, new Item.Properties().group(ItemGroup.TOOLS).maxDamage(parameters.stackSize));
 			registry.register(thisHammer);
-		}//Collections.emptySet(), builder.addToolType(ToolType.PICKAXE, tier.getHarvestLevel())
-		registry.register(new ItemWrench("the_wrench", new Item.Properties().rarity(Rarity.COMMON).maxStackSize(1).maxDamage(-1)));
-		registry.register(new BlockItem(HighTechWolvesTweaks.TRANSPORT_NODE, new Item.Properties().addToolType(ToolType.PICKAXE, 1).rarity(Rarity.EPIC)).setRegistryName("laser_transport_node"));
+		}
+		registry.register(new ItemStoneTorch());
 	}
 }

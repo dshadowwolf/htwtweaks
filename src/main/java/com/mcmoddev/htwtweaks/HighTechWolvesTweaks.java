@@ -1,23 +1,10 @@
 package com.mcmoddev.htwtweaks;
 
 import com.mcmoddev.htwtweaks.data.HammerRecipe;
-import com.mcmoddev.htwtweaks.data.ModItems;
-import com.mcmoddev.htwtweaks.items.properties.TweakItemProperties;
 import com.mcmoddev.htwtweaks.misc.HammerLootCondition;
-import com.mcmoddev.htwtweaks.transport.LaserTransportNodeBase;
-import com.mcmoddev.htwtweaks.transport.containers.LaserTransportContainer;
-import com.mcmoddev.htwtweaks.transport.screens.LaserTransportScreen;
-import com.mcmoddev.htwtweaks.transport.tiles.LaserTransportTileEntity;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -83,9 +70,6 @@ public class HighTechWolvesTweaks {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
 		event.enqueueWork(() -> {
-			ScreenManager.registerFactory(LaserTransportContainer.TYPE, LaserTransportScreen::new);
-			RenderTypeLookup.setRenderLayer(TRANSPORT_NODE, RenderType.getTranslucent());
-			ItemModelsProperties.registerProperty(ModItems.THE_WRENCH, new ResourceLocation("has_position"), (stack, world, entity) -> TweakItemProperties.positionStored(stack, world, entity));
 		});
     }
 
@@ -108,12 +92,10 @@ public class HighTechWolvesTweaks {
 	}
 
 	private void tileEntities(RegistryEvent.Register<TileEntityType<?>> ev) {
-    	ev.getRegistry().register(TileEntityType.Builder.create(LaserTransportTileEntity::new, TRANSPORT_NODE).build(null).setRegistryName("laser_transport_node_tet"));
 	}
 
 	public void registerContainers(RegistryEvent.Register<ContainerType<?>> event)
 	{
-		event.getRegistry().register(new ContainerType<>(LaserTransportContainer::new).setRegistryName("laser_transport_node_container"));
 	}
 
 	private void lootModifiers(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event)
@@ -124,9 +106,6 @@ public class HighTechWolvesTweaks {
 	}
 
 	private void blockRegistration(RegistryEvent.Register<Block> ev) {
-    	ev.getRegistry().register(new LaserTransportNodeBase(AbstractBlock.Properties.create(Material.IRON),
-			(state, world) -> (TileEntity)(new LaserTransportTileEntity()),	null,
-			(id, inv, position) -> new LaserTransportContainer(id, inv, position)).setRegistryName("laser_transport_node"));
 	}
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
