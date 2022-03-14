@@ -1,10 +1,9 @@
 package com.mcmoddev.htwtweaks.data;
 
-import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
+import com.mcmoddev.htwtweaks.blocks.ModBlocks;
 import com.mcmoddev.htwtweaks.items.ItemHammer;
-import com.mcmoddev.htwtweaks.items.ItemStoneTorch;
 import net.minecraft.item.*;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -67,6 +66,7 @@ public class ModItems {
 			ItemHammer thisHammer = new ItemHammer(parameters.name, parameters.tier, parameters.attackDamage, parameters.attackSpeed, parameters.miningSpeed, new Item.Properties().group(ItemGroup.TOOLS).maxDamage(parameters.stackSize));
 			registry.register(thisHammer);
 		}
-		registry.register(new ItemStoneTorch());
+		registry.register(new WallOrFloorItem(ModBlocks.STONE_TORCH, ModBlocks.WALL_TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS))
+			.setRegistryName(new ResourceLocation("htwtweaks", "stone_torch")));
 	}
 }

@@ -37,3 +37,4 @@ libs/*
 /src/main/resources/data/htwtweaks/recipes/temp.py
 /.editorconfig
 /logs/
+.github

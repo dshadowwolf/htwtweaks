@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "htwtweaks:block/wall_torch_stone"
+    },
+    "facing=north": {
+      "model": "htwtweaks:block/wall_torch_stone",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "htwtweaks:block/wall_torch_stone",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "htwtweaks:block/wall_torch_stone",
+      "y": 180
+    }
+  }
+}

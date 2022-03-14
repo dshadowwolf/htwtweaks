@@ -4,8 +4,5 @@
   "item.htwtweaks.iron_hammer": "Iron Sledgehammer",
   "item.htwtweaks.diamond_hammer": "Diamond Sledgehammer",
   "item.htwtweaks.golden_hammer": "Golden Sledgehammer",
-  "item.htwtweaks.netherite_hammer": "Netherite Sledgehammer",
-  "block.htwtweaks.laser_transport_node": "Laser Routing Node",
-  "container.htwtweaks.base_node": "Laser Routing Node",
-  "item.htwtweaks.the_wrench": "The WRENCH!"
+  "item.htwtweaks.netherite_hammer": "Netherite Sledgehammer"
 }
