@@ -10,7 +10,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
 public class ModBlocks {
-	@ObjectHolder("htwtweaks:stone_torch_block")
+	@ObjectHolder("htwtweaks:stone_torch")
     public static final Block STONE_TORCH = null;
 	@ObjectHolder("htwtweaks:wall_torch_stone")
 	public static final Block WALL_TORCH = null;
@@ -25,7 +25,7 @@ public class ModBlocks {
 		registry.register(new TorchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
 			return 14;
 		}).sound(SoundType.WOOD), ParticleTypes.FLAME)
-			.setRegistryName(new ResourceLocation("htwtweaks", "stone_torch_block")));
+			.setRegistryName(new ResourceLocation("htwtweaks", "stone_torch")));
 		registry.register(new WallTorchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
 			return 14;
 		}).sound(SoundType.WOOD).lootFrom(ModBlocks.STONE_TORCH), ParticleTypes.FLAME)
