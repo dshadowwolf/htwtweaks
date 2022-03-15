@@ -1,8 +1,11 @@
 package com.mcmoddev.htwtweaks;
 
+import com.mcmoddev.htwtweaks.blocks.ModBlocks;
 import com.mcmoddev.htwtweaks.data.HammerRecipe;
 import com.mcmoddev.htwtweaks.misc.HammerLootCondition;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.tileentity.TileEntityType;
@@ -44,9 +47,17 @@ public class HighTechWolvesTweaks {
 	public static Block TRANSPORT_NODE = toBeInitializedLater();
 
     public HighTechWolvesTweaks() {
+		// Register the doClientStuff method for modloading
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 		FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
 		FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(GlobalLootModifierSerializer.class, this::lootModifiers);
     }
+
+	private void doClientStuff(final FMLClientSetupEvent event) {
+		// do something that can only be done on the client
+		RenderTypeLookup.setRenderLayer(ModBlocks.STONE_TORCH, RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.WALL_TORCH, RenderType.getCutout());
+	}
 
 	private void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
 		event.getRegistry().registerAll( new HammerRecipe.Serializer().setRegistryName("crushing"));

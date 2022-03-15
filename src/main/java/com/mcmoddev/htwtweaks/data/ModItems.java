@@ -1,5 +1,6 @@
 package com.mcmoddev.htwtweaks.data;
 
+import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import com.mcmoddev.htwtweaks.blocks.ModBlocks;
 import com.mcmoddev.htwtweaks.items.ItemHammer;
 import net.minecraft.item.*;
@@ -62,10 +63,14 @@ public class ModItems {
 	@SubscribeEvent
 	public static final void register(final RegistryEvent.Register<Item> itemRegistryEvent) {
 		IForgeRegistry<Item> registry = itemRegistryEvent.getRegistry();
+		HighTechWolvesTweaks.LOGGER.fatal("Registering Items");
 		for (ItemParameters parameters : items) {
 			ItemHammer thisHammer = new ItemHammer(parameters.name, parameters.tier, parameters.attackDamage, parameters.attackSpeed, parameters.miningSpeed, new Item.Properties().group(ItemGroup.TOOLS).maxDamage(parameters.stackSize));
 			registry.register(thisHammer);
 		}
+		HighTechWolvesTweaks.LOGGER.fatal("Hammers Registered, Trying for the Torch...");
+		HighTechWolvesTweaks.LOGGER.fatal("Torch Block - {} - Wall Block - {}", ModBlocks.STONE_TORCH, ModBlocks.WALL_TORCH);
+
 		registry.register(new WallOrFloorItem(ModBlocks.STONE_TORCH, ModBlocks.WALL_TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS))
 			.setRegistryName(new ResourceLocation("htwtweaks", "stone_torch")));
 	}

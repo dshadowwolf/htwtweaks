@@ -1,5 +1,6 @@
 package com.mcmoddev.htwtweaks.blocks;
 
+import com.mcmoddev.htwtweaks.HighTechWolvesTweaks;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.particles.ParticleTypes;
@@ -24,13 +25,17 @@ public class ModBlocks {
 	@SubscribeEvent
 	public static final void register(final RegistryEvent.Register<Block> blockRegistryEvent) {
 		IForgeRegistry<Block> registry = blockRegistryEvent.getRegistry();
+		HighTechWolvesTweaks.LOGGER.fatal("Registering Blocks!");
 		registry.register(new TorchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
 			return 14;
 		}).sound(SoundType.WOOD), ParticleTypes.FLAME)
 			.setRegistryName(new ResourceLocation("htwtweaks", "stone_torch")));
 		registry.register(new WallTorchBlock(AbstractBlock.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
 			return 14;
-		}).sound(SoundType.WOOD).lootFrom(ModBlocks.STONE_TORCH), ParticleTypes.FLAME)
+		}).sound(SoundType.WOOD).lootFrom(() -> {
+			HighTechWolvesTweaks.LOGGER.fatal("LootFrom({}) called", ModBlocks.STONE_TORCH);
+			return ModBlocks.STONE_TORCH;
+		}), ParticleTypes.FLAME)
 			.setRegistryName(new ResourceLocation("htwtweaks", "wall_torch_stone" )));
 	}
 }
