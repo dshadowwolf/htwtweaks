@@ -38,3 +38,4 @@ libs/*
 /.editorconfig
 /logs/
 .github
+stone_torch.xcf
