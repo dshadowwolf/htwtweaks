@@ -160,7 +160,7 @@ public class HammerRecipe implements IForgeRegistryEntry<HammerRecipe>, IRecipe<
 
 		@Override
 		public void write(PacketBuffer buffer, HammerRecipe recipe) {
-			buffer.writeString(recipe.getGroup());
+			//buffer.writeString(recipe.getGroup());
 			recipe.sourceIngredient.write(buffer);
 			buffer.writeItemStack(recipe.resultItem);
 		}
