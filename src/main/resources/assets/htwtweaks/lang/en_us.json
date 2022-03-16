@@ -4,5 +4,7 @@
   "item.htwtweaks.iron_hammer": "Iron Sledgehammer",
   "item.htwtweaks.diamond_hammer": "Diamond Sledgehammer",
   "item.htwtweaks.golden_hammer": "Golden Sledgehammer",
-  "item.htwtweaks.netherite_hammer": "Netherite Sledgehammer"
+  "item.htwtweaks.netherite_hammer": "Netherite Sledgehammer",
+  "item.htwtweaks.stone_rod": "Stone Rod",
+  "block.htwtweaks.stone_torch": "Stone Torch"
 }

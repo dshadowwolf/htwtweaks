@@ -46,6 +46,8 @@ public class ModItems {
 	public static final Item NETHERITE_HAMMER = null;
     @ObjectHolder("htwtweaks:stone_torch")
 	public static final Item STONE_TORCH = null;
+	@ObjectHolder("htwtweaks:stone_rod")
+	public static final Item STONE_ROD = null;
 
 	private static final ItemParameters[] items = new ItemParameters[] {
 		new ItemParameters("wooden_hammer", ItemTier.WOOD, 6, -3.2f, 2, 59),
@@ -73,5 +75,9 @@ public class ModItems {
 
 		registry.register(new WallOrFloorItem(ModBlocks.STONE_TORCH, ModBlocks.WALL_TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS))
 			.setRegistryName(new ResourceLocation("htwtweaks", "stone_torch")));
+		HighTechWolvesTweaks.LOGGER.fatal("Torch Registered, trying for the Stone Rod");
+		registry.register( new Item(new Item.Properties()
+			                                .group(ItemGroup.MISC).isImmuneToFire().rarity(Rarity.COMMON))
+			                       .setRegistryName(new ResourceLocation("htwtweaks", "stone_rod")) );
 	}
 }
